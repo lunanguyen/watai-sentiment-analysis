@@ -67,8 +67,8 @@ The dashboard uses `st_autorefresh` (600 s TTL) so new CSVs appear automaticall
 ### Visual Preview _(generated in dashboard)_
 
 ```
-image/barchart_sentiment_count.png   ← bar chart  |  image/line_chart_avg_sentiment_Score_finBERT.png  ← daily avg line
-image/wordcloud_positive_headlines.png
+image/barchart_sentiment_count.png   ← bar chart  |  image/line_chart_avg_sentiment_score_finBERT.png  ← daily avg line
+image/word_cloud_positive_headlines.png
 ```
 
 (Add exported PNGs to the `image/` folder so GitHub displays them.)
