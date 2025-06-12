@@ -1,0 +1,8 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+
+# data
+data/raw/
+data/processed/
