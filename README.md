@@ -72,7 +72,7 @@ The dashboard uses `st_autorefresh` (600 s TTL) so new CSVs appear automaticall
 
 **Positive‑headline word cloud**
 
-![Positive word cloud](image/word_cloud_positive_headlines.png)
+![Positive word cloud](image/word_cloud_postive_headlines.png)
 
 ---
 
