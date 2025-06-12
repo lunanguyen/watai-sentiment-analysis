@@ -13,11 +13,23 @@ st.set_page_config(page_title="WWDC-25 Headline Sentiment",
 
 st_autorefresh(interval=600_000, key="datarefresh")   # 10-min refresh
 
-# ------------------------------------------------- load data
+# inside load_latest_dataframe()
 @st.cache_data(ttl=600)
 def load_latest_dataframe():
     data_dir = pathlib.Path("data/processed")
-    latest = sorted(data_dir.glob("headlines_*.csv"))[-1]
+    data_dir.mkdir(parents=True, exist_ok=True)      # make sure folder exists
+    files = sorted(data_dir.glob("headlines_*.csv"))
+
+    # If no processed CSV yet, run the scraper/labeler once
+    if not files:
+        with st.spinner("⏳ First-time run: scraping headlines…"):
+            subprocess.run([sys.executable, "-m", "src.main"], check=True)
+            files = sorted(data_dir.glob("headlines_*.csv"))
+        if not files:
+            st.error("Failed to create initial dataset.")
+            st.stop()
+
+    latest = files[-1]
     df = pd.read_csv(latest)
     df["date"] = pd.to_datetime(df["published"]).dt.date
     last_mtime = dt.datetime.fromtimestamp(latest.stat().st_mtime)
