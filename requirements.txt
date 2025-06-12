@@ -1,0 +1,14 @@
+pandas
+feedparser
+requests
+beautifulsoup4
+vaderSentiment
+nltk
+transformers>=4.41.0
+torch
+yfinance
+matplotlib
+seaborn
+wordcloud
+tqdm
+streamlit      
