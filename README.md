@@ -1,4 +1,4 @@
-# Apple WWDC 2025 — Headline‑Sentiment Dashboard 
+# Apple WWDC 2025 — Headline‑Sentiment Dashboard 🍎
 
 This project scrapes **Google News RSS** for the past week of headlines about Apple’s WWDC 2025 announcements, labels each headline with **VADER** and **FinBERT** sentiment, and serves the results in a responsive **Streamlit** dashboard that auto‑refreshes every 10 minutes. A cron job (or Streamlit‑embedded refresh) keeps the dataset evergreen.
 
@@ -20,8 +20,8 @@ This project scrapes **Google News RSS** for the past week of headlines about A
 
 ```bash
 # clone & set‑up
-git clone https://github.com/lunanguyen/watai-sentiment-analysis.git
-cd watai-sentiment-analysis
+git clone https://github.com/<your‑handle>/wwdc2025-sentiment.git
+cd wwdc2025-sentiment
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python -m nltk.downloader vader_lexicon punkt stopwords
@@ -36,9 +36,9 @@ streamlit run streamlit_app.py
 ### (Optional) 10‑minute cron
 
 ```cron
-*/10 * * * * cd /Users/<you>/watai-sentiment-analysis && \
-  /Users/<you>/watai-sentiment-analysis/.venv/bin/python -m src.main \
-  >> /Users/<you>/watai-sentiment-analysis/logs/cron.log 2>&1
+*/10 * * * * cd /Users/<you>/wwdc2025-sentiment && \
+  /Users/<you>/wwdc2025-sentiment/.venv/bin/python -m src.main \
+  >> /Users/<you>/wwdc2025-sentiment/logs/cron.log 2>&1
 ```
 
 The dashboard uses `st_autorefresh` (600 s TTL) so new CSVs appear automatically.
@@ -64,14 +64,15 @@ The dashboard uses `st_autorefresh` (600 s TTL) so new CSVs appear automaticall
   - *Neutral*  — generic terms like `live`, `event`, `recap`
   - _Negative_ — `delay`, `overhyped`, `shortage`, `price`
 
-### Visual Preview _(generated in dashboard)_
+### Visual Preview _(generated in dashboard)_
 
-```
-image/barchart_sentiment_count.png   ← bar chart  |  image/line_chart_avg_sentiment_score_finBERT.png  ← daily avg line
-image/word_cloud_positive_headlines.png
-```
+| Sentiment Count                                                      | Daily Avg. FinBERT Score                                                                       |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ![Bar chart of sentiment counts](image/barchart_sentiment_count.png) | ![Line chart of daily average FinBERT score](image/line_chart_avg_sentiment_score_finBERT.png) |
 
-(Add exported PNGs to the `image/` folder so GitHub displays them.)
+**Positive‑headline word cloud**
+
+![Positive word cloud](image/word_cloud_positive_headlines.png)
 
 ---
 
