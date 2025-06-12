@@ -20,8 +20,8 @@ This project scrapes **Google News RSS** for the past week of headlines about A
 
 ```bash
 # clone & set‑up
-git clone https://github.com/<your‑handle>/wwdc2025-sentiment.git
-cd wwdc2025-sentiment
+git clone https://github.com/lunanguyen/watai-sentiment-analysis.git
+cd watai-sentiment-analysis
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python -m nltk.downloader vader_lexicon punkt stopwords
@@ -36,9 +36,9 @@ streamlit run streamlit_app.py
 ### (Optional) 10‑minute cron
 
 ```cron
-*/10 * * * * cd /Users/<you>/wwdc2025-sentiment && \
-  /Users/<you>/wwdc2025-sentiment/.venv/bin/python -m src.main \
-  >> /Users/<you>/wwdc2025-sentiment/logs/cron.log 2>&1
+*/10 * * * * cd /Users/<you>/watai-sentiment-analysis && \
+  /Users/<you>/watai-sentiment-analysis/.venv/bin/python -m src.main \
+  >> /Users/<you>/watai-sentiment-analysis/logs/cron.log 2>&1
 ```
 
 The dashboard uses `st_autorefresh` (600 s TTL) so new CSVs appear automatically.
@@ -67,8 +67,8 @@ The dashboard uses `st_autorefresh` (600 s TTL) so new CSVs appear automaticall
 ### Visual Preview _(generated in dashboard)_
 
 ```
-image/sent_count.png   ← bar chart  |  image/sent_ts.png  ← daily avg line
-image/wordcloud_pos.png            |  image/wordcloud_neg.png
+image/barchart_sentiment_count.png   ← bar chart  |  image/line_chart_avg_sentiment_Score_finBERT.png  ← daily avg line
+image/wordcloud_positive_headlines.png
 ```
 
 (Add exported PNGs to the `image/` folder so GitHub displays them.)
