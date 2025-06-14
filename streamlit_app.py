@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
 import pathlib, datetime as dt
+import subprocess, sys
 from streamlit_autorefresh import st_autorefresh
 
 # ------------------------------------------------- page config
